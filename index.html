@@ -4,12 +4,18 @@
     <title>My Hobby Site</title>
     <style>
         /* This is CSS - think of it as setting global constants for UI */
+        topbar { font-family: sans-serif; background: #f0f0f0; color: #133;}
+        .contain { width: 100%; margin: auto; background: blue; padding: 0px; }
         body { font-family: sans-serif; background: #f0f0f0; color: #333; }
         .container { width: 80%; margin: auto; background: white; padding: 20px; }
-        topbar { font-family: sans-serif; background: #f0f0f0; color: #133;}
-        .contain { width: 100%; margin: auto; background: blue; padding: 10px; }
     </style>
 </head>
+<topbar>
+    <div class="contain">
+        <h1>This is my headline</h1>
+        <a href="https://google.com">This is a pointer to Google</a>
+    </div>
+</topbar>
 <body>
     <div class="container">
         <h1>Welcome to my Hobby Page</h1>
@@ -17,10 +23,4 @@
         <a href="https://google.com">This is a pointer to Google</a>
     </div>
 </body>
-<topbar>
-    <div class="contain">
-        <h1>This is my headline</h1>
-        <a href="https://google.com">This is a pointer to Google</a>
-    </div>
-</topbar>
 </html>

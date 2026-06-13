@@ -212,6 +212,24 @@ footer {
         padding: 1.2rem;
     }
 }
+/* ===== Roadmap ===== */
+.roadmap-item {
+display: flex;
+align-items: center;
+gap: 1rem;
+margin: 1rem 0;
+padding: 0.8rem;
+background-color: var(--bg-tertiary);
+border-radius: 10px;
+}
+.roadmap-item input[type="checkbox"] {
+width: 20px;
+height: 20px;
+accent-color: var(--accent);
+}
+.roadmap-item label {
+font-size: 1rem;
+}
 /* ===== Lessons ===== */
 .lesson-section {
 margin-top: 2rem;
@@ -254,4 +272,15 @@ color: var(--accent);
 }
 a:hover {
 color: var(--accent-hover);
+}
+/* ===== CTF Tracker ===== */
+.challenge-card {
+background-color: var(--bg-tertiary);
+padding: 1rem;
+border-radius: 12px;
+margin-top: 1rem;
+}
+.challenge-card h3 {
+color: var(--accent);
+margin-bottom: 0.5rem;
 }

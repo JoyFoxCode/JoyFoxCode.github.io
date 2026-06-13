@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF Tracker - Personal Goal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1> CTF Tracker</h1>
+    <p>Track your Capture The Flag progress</p>
+</header>
+<nav>
+    <a href="index.html">Dashboard</a>
+    <a href="lessons.html">Lessons</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="ctf.html">CTF Tracker</a>
+    <a href="notes.html">Notes</a>
+</nav>
+<main>
+    <section class="dashboard-card">
+        <h2>Add Challenge</h2>
+        <input type="text" id="challenge-name" placeholder="Challenge Name">
+        <select id="challenge-category">
+            <option>Networking</option>
+            <option>Linux</option>
+            <option>OSINT</option>
+            <option>Cryptography</option>
+            <option>Forensics</option>
+            <option>Web</option>
+            <option>Reverse Engineering</option>
+            <option>Binary Exploitation</option>
+            <option>Miscellaneous</option>
+        </select>
+        <input type="text" id="challenge-platform" placeholder="Platform (picoCTF, TryHackMe...)">
+        <textarea id="challenge-notes" placeholder="How did you solve it? Important concepts?" rows="5"></textarea>
+        <button onclick="addChallenge()">Add Challenge</button>
+    </section>
+    <section class="dashboard-card">
+        <h2>Statistics</h2>
+        <p>Total Solved: <strong id="total-solved">0</strong></p>
+        <p>Most Practiced Category: <strong id="favorite-category">None</strong></p>
+    </section>
+    <section class="dashboard-card">
+        <h2>Solved Challenges</h2>
+        <div id="challenge-list"></div>
+    </section>
+</main>
+<script src="script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", loadChallenges);
+
+function getChallenges() {
+    return JSON.parse(localStorage.getItem("ctfChallenges") || "[]");
+}
+
+function saveChallenges(challenges) {
+    localStorage.setItem("ctfChallenges", JSON.stringify(challenges));
+}
+
+function addChallenge() {
+    const name = document.getElementById("challenge-name").value.trim();
+    if (!name) {
+        alert("Enter a challenge name.");
+        return;
+    }
+    const challenge = {
+        name,
+        category: document.getElementById("challenge-category").value,
+        platform: document.getElementById("challenge-platform").value,
+        notes: document.getElementById("challenge-notes").value,
+        date: new Date().toLocaleDateString()
+    };
+    const challenges = getChallenges();
+    challenges.push(challenge);
+    saveChallenges(challenges);
+    addCTFChallenge();
+    loadChallenges();
+    document.querySelectorAll("input, textarea").forEach(e => {
+        if (e.type !== "button") {
+            e.value = "";
+        }
+    });
+}
+
+function loadChallenges() {
+    const container = document.getElementById("challenge-list");
+    const total = document.getElementById("total-solved");
+    const favorite = document.getElementById("favorite-category");
+    const challenges = getChallenges();
+    container.innerHTML = "";
+    total.textContent = challenges.length;
+    const categories = {};
+    challenges.forEach((challenge, index) => {
+        categories[challenge.category] = (categories[challenge.category] || 0) + 1;
+        container.innerHTML += `
+        <div class="challenge-card">
+            <h3>${challenge.name}</h3>
+            <p><strong>Category:</strong> ${challenge.category}</p>
+            <p><strong>Platform:</strong> ${challenge.platform}</p>
+            <p><strong>Date:</strong> ${challenge.date}</p>
+            <p><strong>Notes:</strong><br>${challenge.notes}</p>
+            <button onclick="deleteChallenge(${index})">Delete</button>
+        </div>
+        `;
+    });
+    let max = 0;
+    let favoriteCategory = "None";
+    Object.entries(categories).forEach(([cat, count]) => {
+        if (count > max) {
+            max = count;
+            favoriteCategory = cat;
+        }
+    });
+    favorite.textContent = favoriteCategory;
+}
+
+function deleteChallenge(index) {
+    const challenges = getChallenges();
+    challenges.splice(index, 1);
+    saveChallenges(challenges);
+    removeCTFChallenge();
+    loadChallenges();
+}
+</script>
+</body>
+</html>

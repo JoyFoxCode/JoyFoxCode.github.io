@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes - Personal Goal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1> Notes</h1>
+    <p>Your cybersecurity knowledge base</p>
+</header>
+<nav>
+    <a href="index.html">Dashboard</a>
+    <a href="lessons.html">Lessons</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="ctf.html">CTF Tracker</a>
+    <a href="notes.html">Notes</a>
+</nav>
+<main>
+    <section class="dashboard-card">
+        <h2>Create Note</h2>
+        <input type="text" id="note-title" placeholder="Note title">
+        <select id="note-category">
+            <option>Networking</option>
+            <option>Linux</option>
+            <option>CTF</option>
+            <option>OSINT</option>
+            <option>Cryptography</option>
+            <option>Python</option>
+            <option>Forensics</option>
+            <option>Web Security</option>
+            <option>Reverse Engineering</option>
+            <option>Binary Exploitation</option>
+            <option>General</option>
+        </select>
+        <textarea id="note-content" rows="8" placeholder="Write your notes here..."></textarea>
+        <button onclick="saveNote()">Save Note</button>
+    </section>
+    <section class="dashboard-card">
+        <h2>Search Notes</h2>
+        <input type="text" id="search-notes" placeholder="Search by title or content..." oninput="loadNotes()">
+    </section>
+    <section class="dashboard-card">
+        <h2>Saved Notes</h2>
+        <div id="notes-container"></div>
+    </section>
+</main>
+<script src="script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", loadNotes);
+
+function getNotes() {
+    return JSON.parse(localStorage.getItem("personalGoalNotes") || "[]");
+}
+
+function saveAllNotes(notes) {
+    localStorage.setItem("personalGoalNotes", JSON.stringify(notes));
+}
+
+function saveNote() {
+    const title = document.getElementById("note-title").value.trim();
+    const content = document.getElementById("note-content").value.trim();
+    if (!title || !content) {
+        alert("Please enter both a title and note content.");
+        return;
+    }
+    const notes = getNotes();
+    notes.unshift({
+        title,
+        category: document.getElementById("note-category").value,
+        content,
+        date: new Date().toLocaleDateString()
+    });
+    saveAllNotes(notes);
+    document.getElementById("note-title").value = "";
+    document.getElementById("note-content").value = "";
+    loadNotes();
+}
+
+function loadNotes() {
+    const container = document.getElementById("notes-container");
+    const search = document.getElementById("search-notes").value.toLowerCase();
+    const notes = getNotes();
+    container.innerHTML = "";
+    notes.filter(note => 
+        note.title.toLowerCase().includes(search) ||
+        note.content.toLowerCase().includes(search) ||
+        note.category.toLowerCase().includes(search)
+    )
+    .forEach((note, index) => {
+        container.innerHTML += `
+            <div class="note-card">
+                <h3>${note.title}</h3>
+                <p><strong>Category:</strong> ${note.category}</p>
+                <p><strong>Date:</strong> ${note.date}</p>
+                <p>${note.content.replace(/\n/g, "<br>")}</p>
+                <button onclick="deleteNote(${index})">Delete</button>
+            </div>
+        `;
+    });
+}
+
+function deleteNote(index) {
+    const notes = getNotes();
+    notes.splice(index, 1);
+    saveAllNotes(notes);
+    loadNotes();
+}
+</script>
+</body>
+</html>

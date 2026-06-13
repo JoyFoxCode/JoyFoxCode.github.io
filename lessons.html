@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lessons - Personal Goal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1> Lessons</h1>
+    <p>Learn cybersecurity step by step</p>
+</header>
+<nav>
+    <a href="index.html">Dashboard</a>
+    <a href="lessons.html">Lessons</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="ctf.html">CTF Tracker</a>
+    <a href="notes.html">Notes</a>
+</nav>
+<main>
+    <section class="dashboard-card">
+        <h2>Select a Lesson</h2>
+        <select id="lesson-selector">
+            <option value="">Choose a lesson...</option>
+        </select>
+    </section>
+    <section class="dashboard-card" id="lesson-container" style="display:none;">
+        <h2 id="lesson-title"></h2>
+        <div class="lesson-section">
+            <h3>Learning Objectives</h3>
+            <ul id="lesson-objectives"></ul>
+        </div>
+        <div class="lesson-section">
+            <h3>Lesson Content</h3>
+            <div id="lesson-content"></div>
+        </div>
+        <div class="lesson-section">
+            <h3>Exercises</h3>
+            <ul id="lesson-exercises"></ul>
+        </div>
+        <div class="lesson-section">
+            <h3>Quiz</h3>
+            <div id="lesson-quiz"></div>
+            <button onclick="submitQuiz()">Submit Quiz</button>
+            <p id="quiz-result"></p>
+        </div>
+        <div class="lesson-section">
+            <h3>External Practice</h3>
+            <ul id="lesson-practice"></ul>
+        </div>
+        <button id="complete-button">Mark Lesson Complete</button>
+    </section>
+</main>
+<script src="script.js"></script>
+<script src="lessons.js"></script>
+<script>
+let currentLesson = null;
+const selector = document.getElementById("lesson-selector");
+
+lessons.forEach(lesson => {
+    const option = document.createElement("option");
+    option.value = lesson.id;
+    option.textContent = lesson.title;
+    selector.appendChild(option);
+});
+
+selector.addEventListener("change", e => {
+    loadLesson(e.target.value);
+});
+
+function loadLesson(id) {
+    const lesson = lessons.find(l => l.id === id);
+    if (!lesson) return;
+    currentLesson = lesson;
+    document.getElementById("lesson-container").style.display = "block";
+    document.getElementById("lesson-title").textContent = lesson.title;
+    setCurrentLesson(lesson.title);
+    loadObjectives(lesson.objectives);
+    document.getElementById("lesson-content").innerHTML = lesson.content;
+    loadExercises(lesson.exercises);
+    loadQuiz(lesson.quiz);
+    loadPractice(lesson.externalPractice);
+    setupCompleteButton(lesson.id);
+}
+
+function loadObjectives(objectives) {
+    const list = document.getElementById("lesson-objectives");
+    list.innerHTML = "";
+    objectives.forEach(objective => {
+        const li = document.createElement("li");
+        li.textContent = objective;
+        list.appendChild(li);
+    });
+}
+
+function loadExercises(exercises) {
+    const list = document.getElementById("lesson-exercises");
+    list.innerHTML = "";
+    exercises.forEach(exercise => {
+        const li = document.createElement("li");
+        li.textContent = exercise;
+        list.appendChild(li);
+    });
+}
+
+function loadQuiz(quiz) {
+    const container = document.getElementById("lesson-quiz");
+    container.innerHTML = "";
+    quiz.forEach((question, index) => {
+        const div = document.createElement("div");
+        div.className = "quiz-question";
+        div.innerHTML = `<p><strong>${question.question}</strong></p>`;
+        question.answers.forEach((answer, answerIndex) => {
+            div.innerHTML += `
+                <label>
+                    <input type="radio" name="question${index}" value="${answerIndex}">
+                    ${answer}
+                </label>
+                <br>
+            `;
+        });
+        container.appendChild(div);
+    });
+}
+
+function submitQuiz() {
+    if (!currentLesson) return;
+    let score = 0;
+    currentLesson.quiz.forEach((question, index) => {
+        const selected = document.querySelector(`input[name="question${index}"]:checked`);
+        if (selected && parseInt(selected.value) === question.correct) {
+            score++;
+        }
+    });
+    document.getElementById("quiz-result").textContent = `Score: ${score}/${currentLesson.quiz.length}`;
+}
+
+function loadPractice(practice) {
+    const list = document.getElementById("lesson-practice");
+    list.innerHTML = "";
+    practice.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            <a href="${item.url}" target="_blank">
+                ${item.name}
+            </a>
+        `;
+        list.appendChild(li);
+    });
+}
+
+function setupCompleteButton(lessonId) {
+    const button = document.getElementById("complete-button");
+    button.onclick = () => {
+        markComplete(lessonId);
+        alert("Lesson marked complete!");
+    };
+}
+</script>
+</body>
+</html>

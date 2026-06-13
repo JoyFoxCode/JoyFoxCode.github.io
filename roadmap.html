@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap - Personal Goal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1> Cybersecurity Roadmap</h1>
+        <p>Track your learning journey</p>
+    </header>
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="ctf.html">CTF Tracker</a>
+        <a href="notes.html">Notes</a>
+    </nav>
+    <main>
+        <section class="dashboard-card">
+            <h2>Stage I – Fundamentals</h2>
+            <div class="roadmap-item">
+                <input type="checkbox" id="networking">
+                <label for="networking">Networking Fundamentals</label>
+            </div>
+            <div class="roadmap-item">
+                <input type="checkbox" id="linux">
+                <label for="linux">Linux Command Line</label>
+            </div>
+            <div class="roadmap-item">
+                <input type="checkbox" id="ctf">
+                <label for="ctf">Introduction to CTFs</label>
+            </div>
+            <div class="roadmap-item">
+                <input type="checkbox" id="osint">
+                <label for="osint">OSINT Fundamentals</label>
+            </div>
+        </section>
+        <section class="dashboard-card">
+            <h2>Stage II – Intermediate</h2>
+            <div class="roadmap-item">
+                <input type="checkbox" id="crypto">
+                <label for="crypto">Cryptography</label>
+            </div>
+            <div class="roadmap-item">
+                <input type="checkbox" id="python">
+                <label for="python">Python Programming</label>
+            </div>
+            <div class="roadmap-item">
+                <input type="checkbox" id="forensics">
+                <label for="forensics">Forensics & Wireshark</label>
+            </div>
+            <div class="roadmap-item">
+                <input type="checkbox" id="web">
+                <label for="web">Web Security Fundamentals</label>
+            </div>
+        </section>
+        <section class="dashboard-card">
+            <h2>Stage III – Advanced</h2>
+            <div class="roadmap-item">
+                <input type="checkbox" id="reverse">
+                <label for="reverse">Reverse Engineering</label>
+            </div>
+            <div class="roadmap-item">
+                <input type="checkbox" id="binary">
+                <label for="binary">Binary Exploitation</label>
+            </div>
+            <div class="roadmap-item">
+                <input type="checkbox" id="advanced">
+                <label for="advanced">Advanced CTF Integration</label>
+            </div>
+        </section>
+        <section class="dashboard-card">
+            <h2>Data Management</h2>
+            <button onclick="exportData()">Export Progress</button>
+            <br><br>
+            <input type="file" accept=".json" onchange="importData(event)">
+            <br><br>
+            <button onclick="resetEverything()">Reset All Progress</button>
+        </section>
+    </main>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const topics = [
+                "networking",
+                "linux",
+                "ctf",
+                "osint",
+                "crypto",
+                "python",
+                "forensics",
+                "web",
+                "reverse",
+                "binary",
+                "advanced"
+            ];
+            topics.forEach(topic => {
+                const checkbox = document.getElementById(topic);
+                checkbox.checked = localStorage.getItem(`completed_${topic}`) === "true";
+                checkbox.addEventListener("change", () => {
+                    if (checkbox.checked) {
+                        markComplete(topic);
+                    } else {
+                        unmarkComplete(topic);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,25 +1,102 @@
-<h1>Hello World</h1>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>JoyFox Homepage</title>
-    <style>
-        topbar { font-family: sans-serif; background: #f0f0f0; color: #333;}
-        .contain { width: 100%; margin: auto; background: orange; padding: 0px; }
-        body { font-family: sans-serif; background: #f0f0f0; color: #333; }
-        .container { width: 80%; margin: auto; background: white; padding: 20px; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Goal - Cybersecurity Academy</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<topbar>
-    <div class="contain">
-        <h1>This is my headline</h1>
-        <a href="https://google.com">This is a pointer to Google</a>
-    </div>
-</topbar>
 <body>
-    <div class="container">
-        <h1>Welcome to my the JoyFox homepage</h1>
-        <p>this is basically just high-level strings.</p>
-        <a href="https://google.com">This is a pointer to Google</a>
-    </div>
+    <header>
+        <h1>🦊 Personal Goal</h1>
+        <p>Your Personal Cybersecurity Learning Platform</p>
+    </header>
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="roadmap.html">Roadmap</a>
+        <a href="ctf.html">CTF Tracker</a>
+        <a href="notes.html">Notes</a>
+    </nav>
+    <main>
+        <section class="dashboard-card">
+            <h2>Overall Progress</h2>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="overall-progress"></div>
+            </div>
+            <p id="progress-text">0% Complete</p>
+        </section>
+        <section class="dashboard-grid">
+            <div class="dashboard-card">
+                <h2>Current Lesson</h2>
+                <p id="current-lesson">
+                    Networking Fundamentals
+                </p>
+                <button onclick="location.href='lessons.html'">
+                    Continue Learning
+                </button>
+            </div>
+            <div class="dashboard-card">
+                <h2>Roadmap Status</h2>
+                <ul>
+                    <li id="networking-status">
+                        ⏳ Networking Fundamentals
+                    </li>
+                    <li id="linux-status">
+                        ⏳ Linux Basics
+                    </li>
+                    <li id="ctf-status">
+                        ⏳ Introduction to CTFs
+                    </li>
+                </ul>
+                <button onclick="location.href='roadmap.html'">
+                    View Roadmap
+                </button>
+            </div>
+            <div class="dashboard-card">
+                <h2>CTF Progress</h2>
+                <p>
+                    Challenges Solved:
+                    <span id="ctf-count">0</span>
+                </p>
+                <button onclick="location.href='ctf.html'">
+                    Open Tracker
+                </button>
+            </div>
+            <div class="dashboard-card">
+                <h2>Quick Notes</h2>
+                <textarea
+                    id="quick-notes"
+                    placeholder="Write important concepts here..."
+                    rows="6">
+                </textarea>
+                <button onclick="saveQuickNotes()">
+                    Save Notes
+                </button>
+            </div>
+        </section>
+        <section class="dashboard-card">
+            <h2>Cybersecurity Roadmap</h2>
+            <ol>
+                <li>Networking Fundamentals</li>
+                <li>Linux Command Line</li>
+                <li>CTF Fundamentals</li>
+                <li>OSINT</li>
+                <li>Cryptography</li>
+                <li>Python Programming</li>
+                <li>Forensics</li>
+                <li>Web Exploitation</li>
+                <li>Reverse Engineering</li>
+                <li>Binary Exploitation</li>
+                <li>Advanced CTF Skills</li>
+            </ol>
+        </section>
+    </main>
+    <footer>
+        <p>
+            Personal Goal © 2026
+        </p>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>

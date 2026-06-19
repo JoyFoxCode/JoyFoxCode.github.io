@@ -344,6 +344,202 @@ const lessons = [
 
         ]
 
-    }
+    },
+    {
 
+    id: "osint-fundamentals",
+
+    title: "OSINT Fundamentals",
+
+    category: "Fundamentals",
+
+    objectives: [
+
+        "Understand what OSINT is",
+
+        "Learn common OSINT sources",
+
+        "Understand how investigators gather public information"
+
+    ],
+
+    content: `
+
+        <h3>What is OSINT?</h3>
+
+        <p>OSINT stands for Open Source Intelligence.</p>
+
+        <p>It is the process of collecting information from publicly available sources.</p>
+
+        <h3>Common Sources</h3>
+
+        <table class="lesson-table">
+
+            <tr>
+
+                <th>Source</th>
+
+                <th>Examples</th>
+
+            </tr>
+
+            <tr>
+
+                <td>Search Engines</td>
+
+                <td>Google, Bing</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Social Media</td>
+
+                <td>Public profiles and posts</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Websites</td>
+
+                <td>About pages, blogs, contact pages</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Public Records</td>
+
+                <td>Government databases</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Domain Data</td>
+
+                <td>WHOIS and DNS records</td>
+
+            </tr>
+
+        </table>
+
+        <h3>Why OSINT Matters</h3>
+
+        <ul>
+
+            <li>Security investigations</li>
+
+            <li>Threat intelligence</li>
+
+            <li>Finding exposed information</li>
+
+            <li>CTF challenges</li>
+
+        </ul>
+
+        <h3>Important</h3>
+
+        <p>OSINT uses information that is publicly available. Respect privacy and follow laws and platform rules.</p>
+
+    `,
+
+    exercises: [
+
+        "Search yourself online and see what public information appears.",
+
+        "Look up a company and identify information from its public website.",
+
+        "Use a WHOIS lookup website to inspect a domain.",
+
+        "Write down three OSINT sources you could use in an investigation."
+
+    ],
+
+    quiz: [
+
+        {
+
+            question: "What does OSINT stand for?",
+
+            answers: [
+
+                "Online Security Intelligence Network",
+
+                "Open Source Intelligence",
+
+                "Operational Security Integration Technology",
+
+                "Open System Information Tool"
+
+            ],
+
+            correct: 1
+
+        },
+
+        {
+
+            question: "Which of these is an OSINT source?",
+
+            answers: [
+
+                "A public website",
+
+                "A private password database",
+
+                "A stolen account",
+
+                "Malware"
+
+            ],
+
+            correct: 0
+
+        },
+
+        {
+
+            question: "OSINT primarily uses:",
+
+            answers: [
+
+                "Publicly available information",
+
+                "Secret information",
+
+                "Encrypted traffic",
+
+                "Physical attacks"
+
+            ],
+
+            correct: 0
+
+        }
+
+    ],
+
+    externalPractice: [
+
+        {
+
+            name: "Google Advanced Search",
+
+            url: "https://www.google.com/advanced_search"
+
+        },
+
+        {
+
+            name: "TryHackMe - OSINT",
+
+            url: "https://tryhackme.com"
+
+        }
+
+    ]
+
+}
 ];

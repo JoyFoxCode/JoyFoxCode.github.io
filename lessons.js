@@ -153,119 +153,117 @@ const lessons = [
             }
         ]
     },
-    {
+{
 
-    id: "dns-fundamentals",
+    id: "intro-to-ctf",
 
-    title: "DNS Fundamentals",
+    title: "Introduction to CTFs",
 
-    category: "Networking",
+    category: "Fundamentals",
 
     objectives: [
 
-        "Understand what DNS does",
+        "Understand what a CTF is",
 
-        "Learn common DNS record types",
+        "Learn common challenge categories",
 
-        "Understand the DNS resolution process"
+        "Understand the mindset of solving challenges"
 
     ],
 
     content: `
 
-        <h3>What is DNS?</h3>
+        <h3>What is a CTF?</h3>
 
-        <p>DNS translates domain names into IP addresses.</p>
+        <p>CTF stands for Capture The Flag.</p>
 
-        <pre>
+        <p>A CTF is a cybersecurity challenge where your goal is to find a hidden flag.</p>
 
-google.com
+        <pre>flag{example_flag}</pre>
 
-     ↓
-
-142.250.x.x
-
-        </pre>
-
-        <p>Without DNS, you would need to memorize IP addresses for every website.</p>
-
-        <h3>Common Record Types</h3>
+        <h3>Common Categories</h3>
 
         <table class="lesson-table">
 
             <tr>
 
-                <th>Record</th>
+                <th>Category</th>
 
-                <th>Purpose</th>
-
-            </tr>
-
-            <tr>
-
-                <td>A</td>
-
-                <td>IPv4 Address</td>
+                <th>Focus</th>
 
             </tr>
 
             <tr>
 
-                <td>AAAA</td>
+                <td>Web</td>
 
-                <td>IPv6 Address</td>
-
-            </tr>
-
-            <tr>
-
-                <td>CNAME</td>
-
-                <td>Alias</td>
+                <td>Websites and applications</td>
 
             </tr>
 
             <tr>
 
-                <td>MX</td>
+                <td>Crypto</td>
 
-                <td>Mail Server</td>
+                <td>Ciphers and encryption</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Forensics</td>
+
+                <td>Analyzing files and data</td>
+
+            </tr>
+
+            <tr>
+
+                <td>OSINT</td>
+
+                <td>Public information gathering</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Reverse Engineering</td>
+
+                <td>Understanding programs</td>
 
             </tr>
 
         </table>
 
-        <h3>Resolution Process</h3>
+        <h3>The CTF Mindset</h3>
 
-        <pre>
+        <ul>
 
-Browser
+            <li>Observe carefully</li>
 
-   ↓
+            <li>Question assumptions</li>
 
-DNS Server
+            <li>Break problems into smaller pieces</li>
 
-   ↓
+            <li>Document everything</li>
 
-IP Address
+        </ul>
 
-   ↓
+        <h3>Important</h3>
 
-Website
-
-        </pre>
+        <p>CTFs are legal environments specifically designed for learning and practice.</p>
 
     `,
 
     exercises: [
 
-        "Run nslookup google.com.",
+        "Create a free picoCTF account.",
 
-        "Run nslookup openai.com.",
+        "Browse the challenge categories.",
 
-        "Identify one IPv4 address and one IPv6 address.",
+        "Write down which category interests you most.",
 
-        "Explain DNS in one sentence."
+        "Find a challenge that contains a visible flag."
 
     ],
 
@@ -273,37 +271,17 @@ Website
 
         {
 
-            question: "What does DNS do?",
+            question: "What does CTF stand for?",
 
             answers: [
 
-                "Encrypts traffic",
+                "Capture The Flag",
 
-                "Translates names into IP addresses",
+                "Control The Firewall",
 
-                "Assigns IP addresses",
+                "Cyber Task Force",
 
-                "Routes packets"
-
-            ],
-
-            correct: 1
-
-        },
-
-        {
-
-            question: "Which record stores an IPv4 address?",
-
-            answers: [
-
-                "A",
-
-                "AAAA",
-
-                "MX",
-
-                "CNAME"
+                "Central Traffic Flow"
 
             ],
 
@@ -313,21 +291,37 @@ Website
 
         {
 
-            question: "Which record stores an IPv6 address?",
+            question: "Which category focuses on encryption?",
 
             answers: [
 
-                "A",
+                "Web",
 
-                "AAAA",
+                "Crypto",
 
-                "MX",
+                "OSINT",
 
-                "TXT"
+                "Forensics"
 
             ],
 
             correct: 1
+
+        },
+
+        {
+
+            question: "Are CTFs designed as legal learning environments?",
+
+            answers: [
+
+                "Yes",
+
+                "No"
+
+            ],
+
+            correct: 0
 
         }
 
@@ -337,9 +331,9 @@ Website
 
         {
 
-            name: "TryHackMe - DNS in Detail",
+            name: "picoCTF",
 
-            url: "https://tryhackme.com"
+            url: "https://picoctf.org"
 
         }
     ];

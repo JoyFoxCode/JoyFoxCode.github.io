@@ -146,194 +146,204 @@ const lessons = [
                 correct: 1
             }
         ],
-        externalPractice: [
+         externalPractice: [
+
             {
+
                 name: "OverTheWire Bandit",
+
                 url: "https://overthewire.org/wargames/bandit/"
+
             }
+
         ]
+
     },
-{
 
-    id: "intro-to-ctf",
+    {
 
-    title: "Introduction to CTFs",
+        id: "intro-to-ctf",
 
-    category: "Fundamentals",
+        title: "Introduction to CTFs",
 
-    objectives: [
+        category: "Fundamentals",
 
-        "Understand what a CTF is",
+        objectives: [
 
-        "Learn common challenge categories",
+            "Understand what a CTF is",
 
-        "Understand the mindset of solving challenges"
+            "Learn common challenge categories",
 
-    ],
+            "Understand the mindset of solving challenges"
 
-    content: `
+        ],
 
-        <h3>What is a CTF?</h3>
+        content: `
 
-        <p>CTF stands for Capture The Flag.</p>
+            <h3>What is a CTF?</h3>
 
-        <p>A CTF is a cybersecurity challenge where your goal is to find a hidden flag.</p>
+            <p>CTF stands for Capture The Flag.</p>
 
-        <pre>flag{example_flag}</pre>
+            <p>A CTF is a cybersecurity challenge where your goal is to find a hidden flag.</p>
 
-        <h3>Common Categories</h3>
+            <pre>flag{example_flag}</pre>
 
-        <table class="lesson-table">
+            <h3>Common Categories</h3>
 
-            <tr>
+            <table class="lesson-table">
 
-                <th>Category</th>
+                <tr>
 
-                <th>Focus</th>
+                    <th>Category</th>
 
-            </tr>
+                    <th>Focus</th>
 
-            <tr>
+                </tr>
 
-                <td>Web</td>
+                <tr>
 
-                <td>Websites and applications</td>
+                    <td>Web</td>
 
-            </tr>
+                    <td>Websites and applications</td>
 
-            <tr>
+                </tr>
 
-                <td>Crypto</td>
+                <tr>
 
-                <td>Ciphers and encryption</td>
+                    <td>Crypto</td>
 
-            </tr>
+                    <td>Ciphers and encryption</td>
 
-            <tr>
+                </tr>
 
-                <td>Forensics</td>
+                <tr>
 
-                <td>Analyzing files and data</td>
+                    <td>Forensics</td>
 
-            </tr>
+                    <td>Analyzing files and data</td>
 
-            <tr>
+                </tr>
 
-                <td>OSINT</td>
+                <tr>
 
-                <td>Public information gathering</td>
+                    <td>OSINT</td>
 
-            </tr>
+                    <td>Public information gathering</td>
 
-            <tr>
+                </tr>
 
-                <td>Reverse Engineering</td>
+                <tr>
 
-                <td>Understanding programs</td>
+                    <td>Reverse Engineering</td>
 
-            </tr>
+                    <td>Understanding programs</td>
 
-        </table>
+                </tr>
 
-        <h3>The CTF Mindset</h3>
+            </table>
 
-        <ul>
+            <h3>The CTF Mindset</h3>
 
-            <li>Observe carefully</li>
+            <ul>
 
-            <li>Question assumptions</li>
+                <li>Observe carefully</li>
 
-            <li>Break problems into smaller pieces</li>
+                <li>Question assumptions</li>
 
-            <li>Document everything</li>
+                <li>Break problems into smaller pieces</li>
 
-        </ul>
+                <li>Document everything</li>
 
-        <h3>Important</h3>
+            </ul>
 
-        <p>CTFs are legal environments specifically designed for learning and practice.</p>
+            <p>CTFs are legal environments specifically designed for learning and practice.</p>
 
-    `,
+        `,
 
-    exercises: [
+        exercises: [
 
-        "Create a free picoCTF account.",
+            "Create a free picoCTF account.",
 
-        "Browse the challenge categories.",
+            "Browse the challenge categories.",
 
-        "Write down which category interests you most.",
+            "Write down which category interests you most.",
 
-        "Find a challenge that contains a visible flag."
+            "Find a challenge that contains a visible flag."
 
-    ],
+        ],
 
-    quiz: [
+        quiz: [
 
-        {
+            {
 
-            question: "What does CTF stand for?",
+                question: "What does CTF stand for?",
 
-            answers: [
+                answers: [
 
-                "Capture The Flag",
+                    "Capture The Flag",
 
-                "Control The Firewall",
+                    "Control The Firewall",
 
-                "Cyber Task Force",
+                    "Cyber Task Force",
 
-                "Central Traffic Flow"
+                    "Central Traffic Flow"
 
-            ],
+                ],
 
-            correct: 0
+                correct: 0
 
-        },
+            },
 
-        {
+            {
 
-            question: "Which category focuses on encryption?",
+                question: "Which category focuses on encryption?",
 
-            answers: [
+                answers: [
 
-                "Web",
+                    "Web",
 
-                "Crypto",
+                    "Crypto",
 
-                "OSINT",
+                    "OSINT",
 
-                "Forensics"
+                    "Forensics"
 
-            ],
+                ],
 
-            correct: 1
+                correct: 1
 
-        },
+            },
 
-        {
+            {
 
-            question: "Are CTFs designed as legal learning environments?",
+                question: "Are CTFs legal learning environments?",
 
-            answers: [
+                answers: [
 
-                "Yes",
+                    "Yes",
 
-                "No"
+                    "No"
 
-            ],
+                ],
 
-            correct: 0
+                correct: 0
 
-        }
+            }
 
-    ],
+        ],
 
-    externalPractice: [
+        externalPractice: [
 
-        {
+            {
 
-            name: "picoCTF",
+                name: "picoCTF",
 
-            url: "https://picoctf.org"
+                url: "https://picoctf.org"
 
-        }
-    ];
+            }
+
+        ]
+
+    }
+
+];

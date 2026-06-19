@@ -152,5 +152,194 @@ const lessons = [
                 url: "https://overthewire.org/wargames/bandit/"
             }
         ]
-    }
-];
+    },
+    {
+
+    id: "dns-fundamentals",
+
+    title: "DNS Fundamentals",
+
+    category: "Networking",
+
+    objectives: [
+
+        "Understand what DNS does",
+
+        "Learn common DNS record types",
+
+        "Understand the DNS resolution process"
+
+    ],
+
+    content: `
+
+        <h3>What is DNS?</h3>
+
+        <p>DNS translates domain names into IP addresses.</p>
+
+        <pre>
+
+google.com
+
+     ↓
+
+142.250.x.x
+
+        </pre>
+
+        <p>Without DNS, you would need to memorize IP addresses for every website.</p>
+
+        <h3>Common Record Types</h3>
+
+        <table class="lesson-table">
+
+            <tr>
+
+                <th>Record</th>
+
+                <th>Purpose</th>
+
+            </tr>
+
+            <tr>
+
+                <td>A</td>
+
+                <td>IPv4 Address</td>
+
+            </tr>
+
+            <tr>
+
+                <td>AAAA</td>
+
+                <td>IPv6 Address</td>
+
+            </tr>
+
+            <tr>
+
+                <td>CNAME</td>
+
+                <td>Alias</td>
+
+            </tr>
+
+            <tr>
+
+                <td>MX</td>
+
+                <td>Mail Server</td>
+
+            </tr>
+
+        </table>
+
+        <h3>Resolution Process</h3>
+
+        <pre>
+
+Browser
+
+   ↓
+
+DNS Server
+
+   ↓
+
+IP Address
+
+   ↓
+
+Website
+
+        </pre>
+
+    `,
+
+    exercises: [
+
+        "Run nslookup google.com.",
+
+        "Run nslookup openai.com.",
+
+        "Identify one IPv4 address and one IPv6 address.",
+
+        "Explain DNS in one sentence."
+
+    ],
+
+    quiz: [
+
+        {
+
+            question: "What does DNS do?",
+
+            answers: [
+
+                "Encrypts traffic",
+
+                "Translates names into IP addresses",
+
+                "Assigns IP addresses",
+
+                "Routes packets"
+
+            ],
+
+            correct: 1
+
+        },
+
+        {
+
+            question: "Which record stores an IPv4 address?",
+
+            answers: [
+
+                "A",
+
+                "AAAA",
+
+                "MX",
+
+                "CNAME"
+
+            ],
+
+            correct: 0
+
+        },
+
+        {
+
+            question: "Which record stores an IPv6 address?",
+
+            answers: [
+
+                "A",
+
+                "AAAA",
+
+                "MX",
+
+                "TXT"
+
+            ],
+
+            correct: 1
+
+        }
+
+    ],
+
+    externalPractice: [
+
+        {
+
+            name: "TryHackMe - DNS in Detail",
+
+            url: "https://tryhackme.com"
+
+        }
+    ];
